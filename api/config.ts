@@ -16,3 +16,9 @@ export const secrets = {
     access_token: process.env.ACCESS_TOKEN_SECRET!,
     refresh_token: process.env.REFRESH_TOKEN_SECRET!,
 };
+
+export const cookie = {
+    base_domain: process.env.BASE_DOMAIN,
+};
+
+export const isProduction = process.env.NODE_ENV === 'production';

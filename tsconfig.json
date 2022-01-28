@@ -6,6 +6,7 @@
         "esModuleInterop": true,
         "composite": true,
         "baseUrl": ".",
+        "noImplicitAny": true,
         "paths": {
             "@shared": ["./shared"]
         },

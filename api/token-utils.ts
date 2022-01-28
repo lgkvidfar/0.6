@@ -1,7 +1,8 @@
 import jwt from 'jsonwebtoken';
 
-import { IAccessTokenPayload, IRefreshTokenPayload, IUserDocument } from '@shared';
-import { secrets } from './config';
+import { Cookies, IAccessTokenPayload, IRefreshTokenPayload, IUserDocument } from '@shared';
+import { cookie, isProduction, secrets } from './config';
+import { CookieOptions, Response } from 'express';
 
 const accessTokenSecret = secrets.access_token;
 const refreshTokenSecret = secrets.refresh_token;
@@ -29,4 +30,29 @@ export const buildTokens = (user: IUserDocument) => {
     const refreshToken = refreshPayload && signRefreshToken(refreshPayload);
 
     return { accessToken, refreshToken };
+};
+
+const defaultCookieOptions: CookieOptions = {
+    httpOnly: true,
+    secure: isProduction,
+    sameSite: isProduction ? 'strict' : 'lax',
+    domain: cookie.base_domain,
+    path: '/',
+};
+
+const accessTokenCookieOptions: CookieOptions = {
+    ...defaultCookieOptions,
+    maxAge: TokenExpiration.Access * 1000,
+};
+
+const refreshTokenCookieOptions: CookieOptions = {
+    ...defaultCookieOptions,
+    maxAge: TokenExpiration.Refresh * 1000,
+};
+
+export const setTokens = (res: Response, access: string, refresh?: string) => {
+    res.cookie(Cookies.RefreshToken, access, accessTokenCookieOptions);
+    if (refresh) {
+        res.cookie(Cookies.RefreshToken, refresh, refreshTokenCookieOptions);
+    }
 };
