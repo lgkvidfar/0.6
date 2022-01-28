@@ -1,10 +1,13 @@
-{ "compilerOptions": {
-    "target":"es6",
-    "strict": true,
-    "esModuleInterop": true,
-    "composite": true,
-    "baseUrl": ".",
-    "paths": {
-        "@shared": ["./shared"]
+{
+    "compilerOptions": {
+        "moduleResolution": "node",
+        "target": "es6",
+        "strict": true,
+        "esModuleInterop": true,
+        "composite": true,
+        "baseUrl": ".",
+        "paths": {
+            "@shared": ["./shared"]
+        }
     }
-}}
+}
