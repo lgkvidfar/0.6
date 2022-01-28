@@ -11,7 +11,8 @@ export default function Me() {
     const { user, setUser } = useUser();
 
     const getMe = async () => {
-        const [error, user] = await fetcher<IBasicUser>(`${environment.apiUrl}/me`);
+        const [error, user] = await fetcher<IBasicUser>(`http://localhost:3000/me`);
+
         if (!error && user) setUser(user);
         else Router.push('/');
     };
@@ -19,6 +20,8 @@ export default function Me() {
     useEffect(() => {
         if (!user) getMe();
     });
+
+    console.log(user);
 
     return (
         <main className="flex items-center justify-center h-full">

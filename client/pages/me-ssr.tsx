@@ -5,6 +5,7 @@ import { FC } from 'react';
 
 const MeSSR: FC = () => {
     const { user } = useUser();
+    console.log(user);
 
     return (
         <main className="flex items-center justify-center h-full">
