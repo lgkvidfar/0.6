@@ -4,7 +4,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "git:reg": "git add . && git commit -m git_small_regular_update"
+        "git:reg": "git add . && git commit -m git_small_regular_update && git push -u origin main"
     },
     "keywords": [],
     "author": "",
