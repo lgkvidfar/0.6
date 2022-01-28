@@ -1,8 +1,5 @@
-import { Document, ObjectId } from 'mongodb';
-
-export interface IUserDocument {
+export interface IBasicUser {
     id: string;
-    _id: ObjectId;
     name: string;
     tokenVersion: number;
     gitHubUserId: string;

@@ -1,6 +1,7 @@
+import { Cookies, IAccessTokenPayload, IRefreshTokenPayload, IBasicUser } from '@shared';
+
 import jwt from 'jsonwebtoken';
 
-import { Cookies, IAccessTokenPayload, IRefreshTokenPayload, IUserDocument } from '@shared';
 import { cookie, isProduction, secrets } from './config';
 import { CookieOptions, Response } from 'express';
 
@@ -22,7 +23,7 @@ const signRefreshToken = (payload: IRefreshTokenPayload) => {
     return signed;
 };
 
-export const buildTokens = (user: IUserDocument) => {
+export const buildTokens = (user: IBasicUser) => {
     const accessPayload: IAccessTokenPayload = { userId: user.id };
     const refreshPayload: IRefreshTokenPayload = { userId: user.id, version: user.tokenVersion };
 

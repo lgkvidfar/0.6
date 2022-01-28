@@ -1,15 +1,12 @@
 {
     "compilerOptions": {
-        "moduleResolution": "node",
-        "target": "es6",
+        "target": "es5",
         "strict": true,
         "esModuleInterop": true,
         "composite": true,
         "baseUrl": ".",
-        "noImplicitAny": true,
         "paths": {
             "@shared": ["./shared"]
-        },
-        "skipLibCheck": true
+        }
     }
 }
