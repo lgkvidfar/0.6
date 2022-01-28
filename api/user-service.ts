@@ -16,7 +16,25 @@ export const createUser = async (name: string, gitHubUserId: number) => {
     return newUser;
 };
 
+export const getUserById = async (id: string) => {
+    const result = await UserModel.findOne({ id });
+    return result;
+};
+
 export const getUserByGitHubId = async (gitHubUserId: number) => {
     const result = await UserModel.findOne({ gitHubUserID: gitHubUserId.toString() });
     return result;
+};
+
+export const increaseTokenVersion = async (userId: string) => {
+    try {
+        const result = await UserModel.findOneAndUpdate(
+            { id: userId },
+            { $inc: { tokenVersion: 1 } }
+        );
+        return result;
+    } catch (e) {
+        console.log(e);
+        throw new Error('could not increase token version by one');
+    }
 };
