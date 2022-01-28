@@ -11,3 +11,8 @@ export const mongo = {
     password: process.env.MONGODB_PASSWORD,
     database: process.env.MONGODB_DATABASE,
 };
+
+export const secrets = {
+    access_token: process.env.ACCESS_TOKEN_SECRET!,
+    refresh_token: process.env.REFRESH_TOKEN_SECRET!,
+};
