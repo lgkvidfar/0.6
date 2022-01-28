@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "git:reg": "git add . && git commit -m git_small_regular_update && git push -u origin main",
-        "server:dev": "ts-node-dev -r tsconfig-paths/register api/index.ts",
+        "server:dev": "ts-node-dev --poll --respawn -r tsconfig-paths/register api/index.ts",
         "dev": "tsnd --respawn -r tsconfig-paths/register ./api "
     },
     "keywords": [],

@@ -52,7 +52,7 @@ const refreshTokenCookieOptions: CookieOptions = {
 };
 
 export const setTokens = (res: Response, access: string, refresh?: string) => {
-    res.cookie(Cookies.RefreshToken, access, accessTokenCookieOptions);
+    res.cookie(Cookies.AccessToken, access, accessTokenCookieOptions);
     if (refresh) {
         res.cookie(Cookies.RefreshToken, refresh, refreshTokenCookieOptions);
     }
